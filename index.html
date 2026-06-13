@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Mu Online Prime</title>
+    <title>Guide MU Premium - Portal Definitivo de MU Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,365 +13,1031 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff0000;
+            --primary-dark: #8b0000;
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border: #333;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: #e0e0e0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
             line-height: 1.6;
-            min-height: 100vh;
+        }
+
+        /* ANIMATED BACKGROUND */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(139, 0, 0, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+            border-radius: 5px;
         }
 
         /* HEADER */
         header {
-            background: linear-gradient(135deg, #8B0000 0%, #FF0000 50%, #8B0000 100%);
-            padding: 1.5rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid #FFD700;
+            padding: 1rem 0;
+            transition: all 0.3s;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #fff;
-            font-size: 1.1rem;
-        }
-
-        /* MENU DE NAVEGAÇÃO */
-        nav {
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
             gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
+            list-style: none;
         }
 
         nav a {
-            color: #FFD700;
+            color: var(--text);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.3s;
-            background: rgba(0,0,0,0.2);
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
-            background: rgba(255, 215, 0, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+            color: var(--gold);
         }
 
-        /* CONTEÚDO PRINCIPAL */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--primary));
+            transition: width 0.3s;
         }
 
-        section {
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            border-color: #FFD700;
-        }
-
-        section h2 {
-            color: #FFD700;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 0.5rem;
-        }
-
-        section h3 {
-            color: #FF6B6B;
-            margin: 1rem 0 0.5rem 0;
-        }
-
-        /* CARDS DE CLASSES */
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .class-card {
-            background: linear-gradient(145deg, #1e1e2f 0%, #2d2d44 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #333;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
             transition: all 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            outline: none;
+            width: 200px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+        }
+
+        .search-icon {
+            color: var(--gold);
+            margin-right: 0.5rem;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+            z-index: -2;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #fff 0%, var(--gold) 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 30px rgba(255, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--gold);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--gold), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CARDS GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(20, 20, 30, 0.8), rgba(30, 30, 40, 0.6));
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* CLASS CARDS */
+        .class-card {
+            text-align: center;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
             cursor: pointer;
         }
 
         .class-card:hover {
-            border-color: #FFD700;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(145deg, #1f1f3a, #1a2744);
         }
 
-        .class-icon {
-            font-size: 3rem;
+        .class-icon-large {
+            font-size: 4rem;
             margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
         }
 
-        .class-card h3 {
-            color: #FFD700;
-            margin-bottom: 0.5rem;
-        }
-
-        /* LISTAS */
-        ul {
-            list-style: none;
-            margin-left: 1rem;
-        }
-
-        li {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        li:before {
-            content: "⚔️";
-            position: absolute;
-            left: 0;
-        }
-
-        /* BOTÃO */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #FF0000, #8B0000);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
+        .class-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
             margin-top: 1rem;
-            transition: all 0.3s;
-            border: 2px solid #FFD700;
+            flex-wrap: wrap;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
+        .stat {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* NEWS GRID */
+        .news-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-dark), #2a0845);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image::after {
+            content: 'NEWS';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* TOOLS GRID */
+        .tool-card {
+            text-align: center;
+            background: linear-gradient(145deg, #0f3460, #16213e);
+        }
+
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        /* SERVER CARD */
+        .server-card {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, var(--primary), var(--gold)) 1;
+        }
+
+        .server-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #000;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         /* FOOTER */
         footer {
-            background: #0a0a0a;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 2px solid #FFD700;
+            background: #050505;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
         }
 
-        footer p {
-            color: #888;
-            margin: 0.5rem 0;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        footer a {
-            color: #FFD700;
+        .footer-section h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
             text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* RESPONSIVO */
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
             }
             
-            nav {
-                gap: 1rem;
+            nav ul {
+                display: none;
             }
             
-            nav a {
-                font-size: 0.9rem;
-                padding: 0.3rem 0.8rem;
+            .section-title {
+                font-size: 2rem;
             }
             
-            section {
-                padding: 1.5rem;
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
             }
         }
 
-        /* EFEITO DE SCROLL SUAVE */
-        html {
-            scroll-behavior: smooth;
+        /* LOADING ANIMATION */
+        .skeleton {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
         }
 
-        /* ANIMAÇÃO DE ENTRADA */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
-        section {
-            animation: fadeInUp 0.8s ease-out;
+        /* GLOW EFFECTS */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .glow-box {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🎮 Guia Mu Online Prime</h1>
-        <p>Seu guia definitivo para dominar o jogo!</p>
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#classes">Classes</a>
-            <a href="#itens">Itens</a>
-            <a href="#builds">Builds</a>
-            <a href="#contato">Contato</a>
-        </nav>
+        <div class="header-content">
+            <a href="#" class="logo">GUIDE MU PREMIUM</a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#news">Notícias</a></li>
+                    <li><a href="#items">Itens</a></li>
+                    <li><a href="#tools">Ferramentas</a></li>
+                    <li><a href="#servers">Servidores</a></li>
+                </ul>
+            </nav>
+
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Buscar guides, itens...">
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section id="inicio">
-            <h2>🔥 Bem-vindo ao Guia Mu Online Prime!</h2>
-            <p>Aqui você encontra tudo para se tornar um jogador de elite:</p>
-            <ul>
-                <li>Builds otimizadas para cada classe</li>
-                <li>Melhores spots de farm por nível</li>
-                <li>Guia completo de itens e sets</li>
-                <li>Dicas de PvP e PvM</li>
-                <li>Estratégias de guild war</li>
-            </ul>
-            <a href="#classes" class="cta-button">Começar Agora! ⚔️</a>
-        </section>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <h1>Bem-vindo ao Guide MU Premium</h1>
+            <p>O portal definitivo para dominar MU Online. Builds, Guias, Notícias e muito mais em um só lugar.</p>
+            <div class="cta-group">
+                <a href="#classes" class="btn btn-primary">Explorar Classes</a>
+                <a href="#news" class="btn btn-outline">Últimas Notícias</a>
+            </div>
+        </div>
+    </section>
 
-        <section id="classes">
-            <h2>🧙‍♂️ Classes Disponíveis</h2>
-            <div class="class-grid">
-                <div class="class-card">
-                    <div class="class-icon">⚔️</div>
-                    <h3>Dark Knight</h3>
-                    <p>Tank físico com alta defesa</p>
-                    <p><strong>Melhor para:</strong> PvM e Tank</p>
+    <!-- FEATURED SECTIONS -->
+    <section class="section fade-in">
+        <div class="section-header">
+            <span class="section-tag">Destaques</span>
+            <h2 class="section-title">Conteúdo em Destaque</h2>
+            <p class="section-subtitle">Tudo que você precisa saber sobre MU Online Prime</p>
+        </div>
+
+        <div class="grid">
+            <div class="card news-card">
+                <div class="news-image">📰</div>
+                <div class="news-meta">
+                    <span>📅 Hoje</span>
+                    <span>👤 Admin</span>
+                    <span>🎮 Atualização</span>
                 </div>
-                <div class="class-card">
-                    <div class="class-icon">🔥</div>
-                    <h3>Dark Wizard</h3>
-                    <p>Mago com dano em área massivo</p>
-                    <p><strong>Melhor para:</strong> Farm e PvP</p>
+                <h3>Nova Atualização do Servidor</h3>
+                <p>Confira todas as mudanças da última atualização...</p>
+            </div>
+
+            <div class="card news-card">
+                <div class="news-image">⚔️</div>
+                <div class="news-meta">
+                    <span>📅 Ontem</span>
+                    <span>👤 DarkSlayer</span>
+                    <span>🏆 PvP</span>
                 </div>
-                <div class="class-card">
-                    <div class="class-icon">🧝‍♀️</div>
-                    <h3>Elf</h3>
-                    <p>Suporte com cura e buffs</p>
-                    <p><strong>Melhor para:</strong> Grupo e PvP</p>
+                <h3>Guia de PvP para Magic Gladiator</h3>
+                <p>Aprenda a dominar o PvP com a classe mais versátil...</p>
+            </div>
+
+            <div class="card news-card">
+                <div class="news-image">💎</div>
+                <div class="news-meta">
+                    <span>📅 2 dias</span>
+                    <span>👤 ItemMaster</span>
+                    <span>💍 Itens</span>
                 </div>
-                <div class="class-card">
-                    <div class="class-icon">⚡</div>
-                    <h3>Magic Gladiator</h3>
-                    <p>Híbrido de dano físico e mágico</p>
-                    <p><strong>Melhor para:</strong> PvP e Solo</p>
-                </div>
-                <div class="class-card">
-                    <div class="class-icon">🐉</div>
-                    <h3>Dark Lord</h3>
-                    <p>Invocador com pets poderosos</p>
-                    <p><strong>Melhor para:</strong> PvM e Suporte</p>
+                <h3>Melhores Sets para End Game</h>
+                <p>Os melhores equipamentos para chegar ao topo...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section class="section fade-in" id="classes" style="background: rgba(255,255,255,0.02);">
+        <div class="section-header">
+            <span class="section-tag">Personagens</span>
+            <h2 class="section-title">Classes Disponíveis</h2>
+            <p class="section-subtitle">Escolha sua classe e domine o mundo de MU</p>
+        </div>
+
+        <div class="grid">
+            <div class="card class-card">
+                <span class="class-icon-large">⚔️</span>
+                <h3>Dark Knight</h3>
+                <p>Guerreiro físico com defesa massiva e dano corpo a corpo devastador.</p>
+                <div class="class-stats">
+                    <span class="stat">💪 Força</span>
+                    <span class="stat">🛡️ Tank</span>
+                    <span class="stat">⚔️ PvM</span>
                 </div>
             </div>
-        </section>
 
-        <section id="itens">
-            <h2>💎 Sistema de Itens</h2>
-            <h3>Qualidades de Itens</h3>
-            <ul>
-                <li><strong>Normal:</strong> Itens básicos sem bônus</li>
-                <li><strong>Skill:</strong> +1 skill ativa</li>
-                <li><strong>Luck:</strong> +1 chance de crítico (5%)</li>
-                <li><strong>Option:</strong> +4 a +28 opções de classe</li>
-                <li><strong>Excellent:</strong> +5% a +12% em atributos aleatórios</li>
-                <li><strong>Ancient:</strong> Set completo com bônus adicionais</li>
-            </ul>
-            
-            <h3>Jóias Essenciais</h3>
-            <ul>
-                <li>💍 <strong>Jóia do Caos:</strong> Upgrades +4 a +28</li>
-                <li>💎 <strong>Jóia da Vida:</strong> Upgrades +4 a +28 (defesa)</li>
-                <li>🌙 <strong>Jóia da Criação:</strong> Constrói itens excelents</li>
-                <li>🔮 <strong>Jóia da Harmonia:</strong> Upgrades +8 a +15</li>
-            </ul>
-        </section>
+            <div class="card class-card">
+                <span class="class-icon-large">🔥</span>
+                <h3>Dark Wizard</h3>
+                <p>Mago arcano com magias de área massivas e dano explosivo.</p>
+                <div class="class-stats">
+                    <span class="stat">✨ Magia</span>
+                    <span class="stat">💥 AOE</span>
+                    <span class="stat">🧙 DPS</span>
+                </div>
+            </div>
 
-        <section id="builds">
-            <h2>⚔️ Builds Recomendadas</h2>
-            <article>
-                <h3>Dark Knight (Tank)</h3>
-                <p><strong>Força:</strong> 800-1000 | <strong>Agilidade:</strong> 500-800 | <strong>Vitalidade:</strong> 800-1200</p>
-                <p><strong>Set recomendado:</strong> Set Leg +13 (Dark Horse)</p>
-                <p><strong>Arma:</strong> Lança +15 com opção de dano médio</p>
-            </article>
-            
-            <article>
-                <h3>Dark Wizard (DPS)</h3>
-                <p><strong>Energia:</strong> 1000-1500 | <strong>Força:</strong> 400-600</p>
-                <p><strong>Set recomendado:</strong> Set Leg +13 com opção de dano</p>
-                <p><strong>Arma:</strong> Cajado/Orb +15 com excellent de dano</p>
-            </article>
-        </section>
+            <div class="card class-card">
+                <span class="class-icon-large">🧝‍♀️</span>
+                <h3>Elf</h3>
+                <p>Arqueira divina que combina dano físico com suporte e cura.</p>
+                <div class="class-stats">
+                    <span class="stat">🏹 Arco</span>
+                    <span class="stat">💚 Cura</span>
+                    <span class="stat">⚡ Buffer</span>
+                </div>
+            </div>
 
-        <section id="contato">
-            <h2>📬 Contato</h2>
-            <p>Tem dúvidas ou sugestões? Entre em contato!</p>
-            <p>🐦 Twitch: <a href="#" style="color: #FFD700;">@barbaruivaofc</a></p>
-            <p>💬 Intagram: <a href="#" style="color: #FFD700;">#barbaruivaofc</a></p>
-        </section>
-    </main>
+            <div class="card class-card">
+                <span class="class-icon-large">⚡</span>
+                <h3>Magic Gladiator</h3>
+                <p>Lutador híbrido que domina armas pesadas e magias de combate.</p>
+                <div class="class-stats">
+                    <span class="stat">⚔️ Híbrido</span>
+                    <span class="stat">💢 PvP</span>
+                    <span class="stat">🎯 Solo</span>
+                </div>
+            </div>
 
+            <div class="card class-card">
+                <span class="class-icon-large">🐉</span>
+                <h3>Dark Lord</h3>
+                <p>Senhor das trevas que invoca criaturas poderosas para lutar.</p>
+                <div class="class-stats">
+                    <span class="stat">👻 Summoner</span>
+                    <span class="stat">🛡️ Tank</span>
+                    <span class="stat">🎭 Suporte</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITEMS -->
+    <section class="section fade-in" id="items">
+        <div class="section-header">
+            <span class="section-tag">Database</span>
+            <h2 class="section-title">Sistema de Itens</h2>
+            <p class="section-subtitle">Tudo sobre equipamentos, sets e jóias do MU Online</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <span class="card-icon">⚔️</span>
+                <h3>Armas</h3>
+                <p>Espadas, machados, staffs, bow e todas as armas do jogo com estatísticas completas.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛡️</span>
+                <h3>Sets Completos</h3>
+                <p>Sets de level baixo a high-end, com bônus de set e opções excelents.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🪽</span>
+                <h3>Asas</h3>
+                <p>Asas de level 1 até de eventos, com sistemas de evolução e opções.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💍</span>
+                <h3>Jóias</h3>
+                <p>Jóia do Caos, Vida, Criação, Harmonia e suas utilizações.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔮</span>
+                <h3>Pendentes</h3>
+                <p>Pendentes com opções de atributos e bônus especiais.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🐉</span>
+                <h3>Pets</h3>
+                <p>Dark Horse, Dark Raven e outros pets com seus buffs exclusivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section fade-in" id="tools" style="background: rgba(255,255,255,0.02);">
+        <div class="section-header">
+            <span class="section-tag">Utilitários</span>
+            <h2 class="section-title">Ferramentas</h2>
+            <p class="section-subtitle">Calculadoras e simuladores para otimizar seu personagem</p>
+        </div>
+
+        <div class="grid">
+            <div class="card tool-card">
+                <div class="tool-icon">📊</div>
+                <h3>Calculadora de Reset</h3>
+                <p>Calcule o tempo e exp necessário para seu próximo reset.</p>
+            </div>
+            <div class="card tool-card">
+                <div class="tool-icon">⚔️</div>
+                <h3>Calculadora de Dano</h3>
+                <p>Simule o dano das suas skills e combos.</p>
+            </div>
+            <div class="card tool-card">
+                <div class="tool-icon">📈</div>
+                <h3>Calculadora de Stats</h3>
+                <p>Distribua seus pontos de forma otimizada por classe.</p>
+            </div>
+            <div class="card tool-card">
+                <div class="tool-icon">⏱️</div>
+                <h3>Timer de Eventos</h3>
+                <p>Nunca mais perca um Blood Castle ou Chaos Castle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVERS -->
+    <section class="section fade-in" id="servers">
+        <div class="section-header">
+            <span class="section-tag">Comunidade</span>
+            <h2 class="section-title">Servidores em Destaque</h2>
+            <p class="section-subtitle">Os melhores servidores de MU Online da atualidade</p>
+        </div>
+
+        <div class="grid">
+            <div class="card server-card">
+                <span class="server-badge">🔥 TOP 1</span>
+                <h3>MU Dragon Season 18</h3>
+                <p>Servidor Season 18 com rates 5x, sistema de upgrades moderno e comunidade ativa.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
+                    <span class="stat">⚡ 5x XP</span>
+                    <span class="stat">💎 2x Drop</span>
+                </div>
+                <a href="#" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Conectar</a>
+            </div>
+
+            <div class="card server-card">
+                <span class="server-badge">⭐ VIP</span>
+                <h3>MU Legends Premium</h3>
+                <p>Servidor VIP com sistema anti-cheat, eventos exclusivos e suporte 24h.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
+                    <span class="stat">🚀 10x XP</span>
+                    <span class="stat">💎 5x Drop</span>
+                </div>
+                <a href="#" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Conectar</a>
+            </div>
+
+            <div class="card server-card">
+                <h3>MU Classic Zero</h3>
+                <p>Reviva a experiência clássica do MU Online sem modificações excessivas.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
+                    <span class="stat">🔄 1x XP</span>
+                    <span class="stat">⚔️ PvP Hardcore</span>
+                </div>
+                <a href="#" class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Conectar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2024 Guia Mu Online Prime | Desenvolvido com ❤️</p>
-        <p><small>Mu Online é uma marca registrada da Webzen. Este guia é não-oficial.</small></p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Guide MU Premium</h4>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">O portal mais completo de MU Online. Guias, builds, notícias e ferramentas para você dominar o jogo.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#items">Itens</a></li>
+                    <li><a href="#tools">Ferramentas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#">Calculadora de Reset</a></li>
+                    <li><a href="#">Calculadora de Dano</a></li>
+                    <li><a href="#">Mapa Interativo</a></li>
+                    <li><a href="#">Timer de Eventos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Suporte</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="#">Anuncie Aqui</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 Guide MU Premium. Todos os direitos reservados. MU Online é marca registrada da Webzen.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Design inspirado em portais profissionais de MMORPG.</p>
+        </div>
     </footer>
 
     <script>
-        // MENU MOBILE SIMPLES
-        const nav = document.querySelector('nav');
-        
-        // Efeito de sombra no scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 30px rgba(255, 0, 0, 0.6)';
-            } else {
-                header.style.boxShadow = '0 4px 20px rgba(255, 0, 0, 0.4)';
+        // PARTICLE SYSTEM
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // SCROLL ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // SEARCH FUNCTIONALITY (SIMULATED)
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 2) {
+                console.log('Buscando por:', query);
+                // Aqui entraria a lógica de busca real
             }
         });
 
-        // Clique nos cards de classe (efeito simples)
-        document.querySelectorAll('.class-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const className = this.querySelector('h3').textContent;
-                alert(`Em breve: Guia completo da classe ${className}! 🚧`);
-            });
+        // HEADER SCROLL EFFECT
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.5rem 0';
+                header.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.padding = '1rem 0';
+                header.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>

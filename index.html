@@ -5,83 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide MU Premium</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
         }
         header {
-            background: #8B0000;
-            padding: 20px;
+            background: linear-gradient(135deg, #8B0000, #FF0000);
+            padding: 2rem;
             text-align: center;
             border-bottom: 3px solid #FFD700;
         }
         h1 {
             color: #FFD700;
-            margin: 0;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
-        .servidor {
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+        .section {
+            margin-bottom: 4rem;
         }
-        .servidor img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
+        .section-title {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        .card h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background: #FFD700;
-            color: #000;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #FF0000, #8B0000);
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            margin: 5px;
+            border-radius: 50px;
             font-weight: bold;
+            margin-top: 1rem;
+            border: 2px solid #FFD700;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
         }
         .btn-discord {
             background: #5865F2;
-            color: #fff;
+            border-color: #5865F2;
+        }
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #FFD700;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🎮 Guide MU Premium</h1>
+        <div class="container">
+            <h1>🎮 Guide MU Premium</h1>
+            <p style="color: #fff; margin-top: 0.5rem;">O portal definitivo de MU Online</p>
+        </div>
     </header>
-    <div class="container">
-        <h2>Servidores em Destaque</h2>
-        
-        <div class="servidor">
-            <img src="/images/servidores/mu-dragon.jpg" alt="MU Dragon">
-            <h3>MU Dragon Season 18</h3>
-            <p>Servidor Season 18 com rates 5x, comunidade ativa.</p>
-            <p>
-                <a href="https://seusite.com" class="btn" target="_blank">🌐 Site Oficial</a>
-                <a href="https://discord.gg/convite" class="btn btn-discord" target="_blank">💬 Discord</a>
-            </p>
-        </div>
 
-        <div class="servidor">
-            <img src="/images/servidores/mu-legends.gif" alt="MU Legends">
-            <h3>MU Legends Premium</h3>
-            <p>Servidor VIP com anti-cheat e eventos exclusivos.</p>
-            <p>
-                <a href="https://seusite2.com" class="btn" target="_blank">🌐 Site Oficial</a>
-                <a href="https://discord.gg/convite2" class="btn btn-discord" target="_blank">💬 Discord</a>
-            </p>
-        </div>
-    </div>
+    <main class="container">
+        <!-- Seção de Servidores -->
+        <section class="section">
+            <h2 class="section-title">🔥 Servidores em Destaque</h2>
+            <div class="grid">
+                <!-- Servidor 1 -->
+                <div class="card">
+                    <h3>MU Dragon Season 18</h3>
+                    <p>Servidor Season 18 com rates 5x, comunidade ativa e eventos diários.</p>
+                    <p><strong>XP:</strong> 5x | <strong>Drop:</strong> 2x</p>
+                    <a href="https://seusite.com" class="btn" target="_blank">🌐 Site Oficial</a>
+                    <a href="https://discord.gg/convite" class="btn btn-discord" target="_blank">💬 Discord</a>
+                </div>
+
+                <!-- Servidor 2 -->
+                <div class="card">
+                    <h3>MU Legends Premium</h3>
+                    <p>Servidor VIP com anti-cheat, eventos exclusivos e suporte 24h.</p>
+                    <p><strong>XP:</strong> 10x | <strong>Drop:</strong> 5x</p>
+                    <a href="https://seusite2.com" class="btn" target="_blank">🌐 Site Oficial</a>
+                    <a href="https://discord.gg/convite2" class="btn btn-discord" target="_blank">💬 Discord</a>
+                </div>
+
+                <!-- Servidor 3 -->
+                <div class="card">
+                    <h3>MU Classic Zero</h3>
+                    <p>Experiência clássica do MU Online sem modificações.</p>
+                    <p><strong>XP:</strong> 1x | <strong>Drop:</strong> 1x</p>
+                    <a href="https://seusite3.com" class="btn" target="_blank">🌐 Site Oficial</a>
+                    <a href="https://discord.gg/convite3" class="btn btn-discord" target="_blank">💬 Discord</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Classes -->
+        <section class="section">
+            <h2 class="section-title">⚔️ Classes</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Dark Knight</h3>
+                    <p>Guerreiro tank com alta defesa.</p>
+                </div>
+                <div class="card">
+                    <h3>Dark Wizard</h3>
+                    <p>Mago com dano em área massivo.</p>
+                </div>
+                <div class="card">
+                    <h3>Elf</h3>
+                    <p>Arqueira com suporte e cura.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Guide MU Premium | Todos os direitos reservados</p>
+    </footer>
 </body>
 </html>
